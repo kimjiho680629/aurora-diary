@@ -82,3 +82,27 @@ Textual의 CSS 프레임워크를 활용하여 터미널 내에서 프리미엄 
 
 - **코드 퀄리티**: 리눅스 전문가용 도구에 걸맞게 예외 처리를 최우선으로 합니다. (예: 이미지 파일이 손상되었거나 경로가 부재할 시 크래시 없이 '이미지 없음' 가이드 표기)
 - **에디터 샌드박싱**: 외부 에디터(Vim 등) 구동 시 Textual의 TUI 루프를 일시 중지(`suspend_context` 사용)하고 안전하게 서브프로세스를 가동한 뒤, 복귀 시 TUI를 리프레시해야 합니다.
+- **커밋 메시지 규칙 (Conventional Commits)**:
+  - `feat`: 새로운 기능 추가 (예: `feat: add markdown image export feature`)
+  - `fix`: 버그 수정 (예: `fix: handle missing diary.json gracefully`)
+  - `docs`: 문서 변경 (예: `docs: update GEMINI.md and README`)
+  - `style`: 코드 포맷팅, CSS 스타일 시트 수정 (예: `style: update midnight aurora neon glow palette`)
+  - `refactor`: 프로덕션 코드 리팩토링
+  - `chore`: 빌드 업무 수정, 패키지 매니저 설정, .gitignore 수정 등
+
+---
+
+## 🌐 6. Git 저장소 관리 & GitHub 동기화 가이드
+
+- **기본 브랜치**: `main`
+- **형상 관리 원칙**:
+  - 가상환경(`.venv`), 바이트코드(`__pycache__`, `*.pyc`), 빌드 아티팩트(`*.egg-info`)는 `.gitignore`에 의해 반드시 커밋 대상에서 제외됩니다.
+  - 사용자 로컬 다이어리 데이터(`~/.config/aurora-diary/diary.json`)는 레포지토리 외부 격리 디렉토리에 위치하여 Git에 노출되지 않습니다.
+- **GitHub 원격 저장소 푸시 절차**:
+  ```bash
+  # 1. 원격 저장소 등록
+  git remote add origin https://github.com/kimjiho680629/<repo_name>.git
+  
+  # 2. 메인 브랜치 푸시
+  git push -u origin main
+  ```
