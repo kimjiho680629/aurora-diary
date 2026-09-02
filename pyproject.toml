@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aurora-diary"
+version = "1.0.0"
+description = "A premium TUI diary application with Midnight Aurora theme."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "KJH", email = "kjh@example.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Environment :: Console",
+]
+dependencies = [
+    "textual>=0.85.0",
+    "rich>=13.7.0",
+    "pillow>=10.2.0",
+]
+
+[project.scripts]
+aurora-diary = "aurora_diary.cli:main"

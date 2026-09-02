@@ -1,0 +1,352 @@
+/* Midnight Aurora 디자인 시스템 스타일시트 */
+
+/* 전역 변수 정의 */
+$background: #0B0F19;      /* 아주 깊은 밤의 블루 블랙 */
+$surface: #1E293B;         /* 패널/카드 기본 배경 (Slate-800) */
+$panel-border: #475569;    /* 차분한 보더 라인 (Slate-600) */
+
+/* 네온 포인트 컬러 */
+$neon-cyan: #06B6D4;       /* 캘린더 활성화, 핵심 포인트 */
+$neon-purple: #8B5CF6;     /* 서브 헤더, 보조 정보 */
+$neon-pink: #EC4899;       /* 경고, 강렬한 액티브 포커스 */
+$text-primary: #F8FAFC;    /* 일반 흰색 텍스트 (Slate-50) */
+$text-muted: #94A3B8;      /* 뮤트된 설명글 (Slate-400) */
+
+/* 메인 앱 스타일 */
+Screen {
+    background: $background;
+    color: $text-primary;
+    layers: main dialog;
+}
+
+/* 대시보드 레이아웃 */
+#app-grid {
+    width: 100%;
+    height: 100%;
+}
+
+/* 좌측 캘린더/사이드바 패널 */
+#sidebar-panel {
+    width: 44;                  /* 캘린더가 찌그러지지 않고 완벽히 정렬되는 이상적인 폭 */
+    height: 100%;
+    background: $background;
+    border-right: tall $panel-border;
+    padding: 1 1;
+}
+
+/* 우측 콘텐츠 뷰어 패널 */
+#content-panel {
+    width: 1fr;                 /* 남은 가로 공간 전체를 다이나믹하게 사용 */
+    height: 100%;
+    background: $background;
+    padding: 1 2;
+    layout: vertical;
+}
+
+/* 단단한 패널 박스 공통 */
+.aurora-card {
+    background: $surface;
+    border: solid $panel-border;
+    border-title-color: $neon-purple;
+    border-title-style: bold;
+    padding: 1 2;
+    margin-bottom: 1;
+}
+
+.aurora-card:focus {
+    border: solid $neon-cyan;
+    border-title-color: $neon-cyan;
+}
+
+/* 캘린더 스타일 */
+CalendarWidget {
+    background: $surface;
+    border: solid $panel-border;
+    border-title-color: $neon-purple;
+    border-title-align: center;
+    width: 100%;
+    height: auto;
+    padding: 1;
+    margin-top: 1;
+}
+
+CalendarWidget:focus {
+    border: solid $neon-cyan;
+}
+
+/* 캘린더 내부 그리드 */
+.calendar-header {
+    content-align: center middle;
+    text-style: bold;
+    color: $neon-cyan;
+    height: 1;
+    margin-bottom: 1;
+}
+
+.calendar-grid {
+    layout: grid;
+    grid-size: 7;
+    grid-rows: auto;
+    grid-columns: 1fr;
+    width: 100%;
+    height: auto;
+}
+
+.calendar-day-name {
+    text-align: center;
+    color: $neon-purple;
+    text-style: bold;
+    height: 1;
+}
+
+.calendar-day-btn {
+    min-width: 3;
+    height: 2;
+    content-align: center middle;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar-day-btn:hover {
+    background: #334155;
+}
+
+.calendar-day-today {
+    color: $neon-pink;
+    text-style: bold;
+}
+
+.calendar-day-has-diary {
+    border-bottom: solid $neon-cyan;
+}
+
+.calendar-day-selected {
+    background: $neon-cyan;
+    color: $background;
+    text-style: bold;
+}
+
+/* 감정 통계 위젯 */
+StatsWidget {
+    background: $surface;
+    border: solid $panel-border;
+    border-title-color: $neon-purple;
+    padding: 1 2;
+    height: auto;
+    margin-top: 1;
+}
+
+StatsWidget:focus {
+    border: solid $neon-cyan;
+}
+
+.stats-bar-row {
+    height: 1;
+    margin-bottom: 1;
+}
+
+/* 일기 메인 디스플레이 관련 */
+#diary-display-title {
+    color: $neon-cyan;
+    text-style: bold;
+    padding-bottom: 1;
+    border-bottom: double $panel-border;
+    margin-bottom: 1;
+}
+
+#diary-display-meta {
+    color: $text-muted;
+    margin-bottom: 1;
+    height: auto;
+}
+
+#diary-display-body {
+    background: $surface;
+    border: solid $panel-border;
+    padding: 1 2;
+    height: 1fr;
+    overflow-y: scroll;
+}
+
+#diary-image-preview {
+    background: $background;
+    border: dashed $panel-border;
+    border-title-color: $neon-purple;
+    height: 15;
+    padding: 1;
+    margin-top: 1;
+    overflow: hidden;
+    content-align: center middle;
+}
+
+#diary-image-preview:focus {
+    border: dashed $neon-cyan;
+}
+
+/* 공통 버튼 디자인 */
+Button {
+    background: $surface;
+    color: $text-primary;
+    border: tall $panel-border;
+    min-width: 12;
+    height: 3;
+}
+
+Button:hover {
+    background: #334155;
+}
+
+Button:focus {
+    background: $neon-cyan;
+    color: $background;
+    border: tall $neon-pink;
+    text-style: bold;
+}
+
+/* 경고/위험 버튼 */
+Button.danger-btn {
+    border: tall $neon-pink;
+}
+
+Button.danger-btn:focus {
+    background: $neon-pink;
+    color: $text-primary;
+    border: tall $neon-cyan;
+}
+
+/* 헤더 및 푸터 */
+Header {
+    background: $surface;
+    color: $neon-cyan;
+    text-style: bold;
+}
+
+Footer {
+    background: $surface;
+    color: $text-muted;
+}
+
+/* 대화창 팝업 스타일 */
+.dialog-container {
+    background: $background;
+    border: solid $neon-purple;
+    border-title-color: $neon-cyan;
+    border-title-style: bold;
+    padding: 1 2;
+    width: 60;
+    height: auto;
+    align: center middle;
+    layer: dialog;
+}
+
+.dialog-title {
+    color: $neon-cyan;
+    text-style: bold;
+    text-align: center;
+    margin-bottom: 1;
+}
+
+/* 입력 필드 */
+Input {
+    background: $surface;
+    border: solid $panel-border;
+    color: $text-primary;
+}
+
+Input:focus {
+    border: solid $neon-cyan;
+}
+
+/* 도움말 텍스트 */
+.help-text {
+    color: $text-muted;
+    text-style: italic;
+    margin-bottom: 1;
+}
+
+/* 목록 스타일 */
+ListView {
+    background: $surface;
+    border: solid $panel-border;
+}
+
+ListView:focus {
+    border: solid $neon-cyan;
+}
+
+ListItem {
+    padding: 0 1;
+}
+
+ListItem:focus {
+    background: $neon-purple;
+    color: $text-primary;
+}
+
+/* 통계 가이드 및 레이블 스타일 */
+.stats-empty-guide {
+    color: $text-muted;
+    text-style: italic;
+    content-align: center middle;
+    text-align: center;
+    padding: 2 0;
+}
+
+.stats-title-label {
+    color: $neon-purple;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+/* 신규 작성 모달 스타일셋 */
+.write-field-title {
+    color: $neon-cyan;
+    text-style: bold;
+    margin-top: 1;
+}
+
+.write-mood-container {
+    height: 3;
+    align: center middle;
+    margin-bottom: 1;
+}
+
+.write-editor-btn {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+.write-action-container {
+    height: 3;
+    margin-top: 1;
+    content-align: center middle;
+}
+
+.write-save-btn {
+    margin-right: 2;
+}
+
+/* 통합 검색 모달 스타일셋 */
+.search-dialog {
+    width: 70;
+    height: 35;
+}
+
+.search-result-label {
+    color: $neon-purple;
+    margin-top: 1;
+    text-style: bold;
+}
+
+.search-action-container {
+    height: 3;
+    margin-top: 1;
+    content-align: right middle;
+}
+
+.search-empty-text {
+    color: $text-muted;
+    text-style: italic;
+}
