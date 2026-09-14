@@ -44,3 +44,10 @@ htmlcov/
 # OS artifacts
 .DS_Store
 Thumbs.db
+
+# Desktop Frontend & Rust (Tauri)
+node_modules/
+desktop/node_modules/
+desktop/dist/
+desktop/src-tauri/target/
+target/
